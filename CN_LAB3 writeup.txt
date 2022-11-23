@@ -1,0 +1,297 @@
+config routers - inter route communication
+3 Rs
+layer 3 - network layer devices
+header hop
+ip, subnet, gateway
+R->CLI
+sys config -> n
+
+
+
+
+?no
+
+Router>enable
+Router#config terminal
+Router(config)#interface fastethernet0/0
+(config-if)#ip address 10.0.0.10 255.0.0.0
+(config-if)#no shut
+
+--green lights
+#exit
+#
+
+Router>enable
+Router#config terminal
+Router(config)#interface fastethernet1/0
+(config-if)#ip address 20.0.0.10 255.0.0.0
+(config-if)#no shut
+
+--green lights
+#exit
+
+#exit
+
+Router#show ip route
+
+PC0->Desktop->ping 20.0.0.1
+
+Router>enable
+Router#config terminal
+Router(config)#interface fastethernet0/0
+(config-if)#ip address 10.0.0.10 255.0.0.0
+(config-if)#no shut
+
+--green lights
+
+
+
+
+
+FAIR COPY
+1. 2 PCs and a generic router were selected. The first PC's configuration was setup with IP : 10.0.0.1 ; Subnet : 255.0.0.0 and Gateway : 10.0.0.10.
+For the 2nd PC the configuration was setup with IP : 20.0.0.1 ; Subnet : 255.0.0.0 and Gateway : 20.0.0.10.
+
+2. The CLI mode of the router was accessed. System configuration was set to no.
+ After clicking enter the follwowing commands were entered to setup the gatway for the first router:
+Router>enable
+Router#config t
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+Router(config)#interface fastethernet 0/0
+Router(config-if)#ip address 10.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#enable
+% Incomplete command.
+Router(config)#exit
+
+3. After this the gatway for the 2nd router was set with the following commands : 
+
+Router#enable
+Router#enable
+Router#config t
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+	
+Router(config)#interface fastethernet 1/0
+Router(config-if)#ip address 20.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet1/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#exit
+
+4. show ip route - shows the ip route that has been setup in the previous steps
+
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+C    10.0.0.0/8 is directly connected, FastEthernet0/0
+C    20.0.0.0/8 is directly connected, FastEthernet1/0
+
+5. PC 10.0.0.1 was clicked and ping 20.0.0.1 was entered.
+Packet Tracer PC Command Line 1.0
+PC>ping 20.0.0.1
+
+Pinging 20.0.0.1 with 32 bytes of data:
+
+Request timed out.
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+
+Ping statistics for 20.0.0.1:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+PC>ping 20.0.0.1
+
+Pinging 20.0.0.1 with 32 bytes of data:
+
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+Reply from 20.0.0.1: bytes=32 time=0ms TTL=127
+
+Ping statistics for 20.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAIN EXP 
+
+Router 1
+Router>enable
+Router#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface 
+Router(config)#interface f
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip address 10.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#interface S
+Router(config-if)#interface Se
+Router(config-if)#exit
+Router(config)#interface S
+Router(config)#interface Serial2/0
+Router(config-if)#ip address 20.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#
+
+
+
+Router 2
+         --- System Configuration Dialog ---
+
+Continue with configuration dialog? [yes/no]: n
+
+
+Press RETURN to get started!
+
+
+
+Router>enable
+Router#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#if S
+Router(config)#interface
+Router(config)#interface S
+Router(config)#interface Serial2/0
+Router(config-if)#ip address 20.0.0.20 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial2/0, changed state to up
+
+Router(config)#interface Serial3/0
+Router(config-if)#ip address 30.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+%LINK-5-CHANGED: Interface Serial3/0, changed state to down
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+
+
+ROUTER 3
+
+         --- System Configuration Dialog ---
+
+Continue with configuration dialog? [yes/no]: n
+
+
+Press RETURN to get started!
+
+
+
+Router>enable
+Router#interface S
+Router#config 
+Router#config terminal 
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#i
+Router(config)#inter
+Router(config)#interface S
+Router(config)#interface Serial 2/0
+Router(config-if)#ip address 30.0.0.20
+% Incomplete command.
+Router(config-if)#ip address 30.0.0.20 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial2/0, changed state to up
+
+Router(config)#interface Fas
+Router(config)#interface FastEthernet 0/0
+Router(config-if)#ip address 40.0.0.10 255.0.0.0
+Router(config-if)#no shut
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+
