@@ -1,0 +1,46 @@
+DHCP within LAN
+
+
+4-5 machne pc do not give ip address
+one server
+via generic switch connect to generic router
+give server ip adddress 10.0.0.1
+router 10.0.0.50
+connect pc and server to switch
+gateway server gateway 10.0.0.50
+router config
+
+enable
+config t
+interface fastethernet 4/0
+ip address 10.0.0.50 255.0.0.0
+no shut
+exit
+
+
+
+server
+services
+DHCP
+switch on 
+gateway 10.0.0.50
+DNS 10.0.0.1
+TFTP 10.0.0.1
+start ip address 10.0.0.2
+maximum no of user 
+save 
+
+give click on pc1
+desktop
+ip config
+DHCP
+
+same on pc2 and 3
+
+on pc1
+command prompt
+ping 10.0.0.4
+
+TO GIVE ANOTHER POOL
+go to server
+adn click add to create one more pool
